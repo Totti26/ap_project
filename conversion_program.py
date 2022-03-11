@@ -1,4 +1,4 @@
-#conversion prog, will be ably to convert weight, distace, time
+#conversion prog, will be able to convert weight, distace, time
 
 def conversion_options():
     print('1) Mi to Km')
