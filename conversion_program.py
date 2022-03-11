@@ -1,6 +1,6 @@
 #conversion prog, will be able to convert weight, distace, time
 
-def conversion_options():
+def dist_conversion():
     print('1) Mi to Km')
     print('2) Km to Mi')
 
