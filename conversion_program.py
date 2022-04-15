@@ -6,57 +6,43 @@ def conv_types():
     print('4) Mass')
 '''
 #dist conversions
-def dist_conv():
-    print('1) Mi to Km')
-    print('2) Km to Mi')
-    print('3) Cm to In')
-    print('4) In to Cm')
+distConversions = {
+    "meter-meter": 1,
+    "mile-meter": 1609.34,
+    "inch-meter": 0.0254,
+    "kilometer-meter": 1000,
+    "centimeter-meter": 0.01,
+    "foot-meter": 0.3048,
+    "millimeter-meter": 0.001,
+    "yard-meter":0.9144
+}
 
-def mi_to_km():
-    mi = float(input('Enter mi: '))
-    km = mi * 1.60934
-    print(f'{mi} mi = {round(km,2)}km')
+def convert(input1, currentUnits, outputUnits):
+    return input1 * distConversions[f"{currentUnits}-meter"] / distConversions[f"{outputUnits}-meter"]
 
-def km_to_mi():
-    km = float(input('Enter km: '))
-    mi = km / 1.60934
-    print(f'{km} km = {round(mi,2)}mi')
 
-def cm_to_in():
-    cm = float(input('Enter cm: '))
-    inch = cm * 0.393701  
-    print(f'{cm} cm = {round(inch,2)}in')
+#time conversions
+timeConversions = {
+    "minute-minute": 1,
+    "second-minute": 0.0166667,
+    "millisecond-minute": 1.66667e-5,
+    "hour-minute": 60,
+    "microsecond-minute": 1.66667e-8,
+    "decasecond-minute": 0.166667   
+}
 
-def in_to_cm():
-    inch = float(input('Enter in: '))
-    cm = inch / 0.393701
-    print(f'{inch} in = {round(cm,2)}cm')
+def convert(input1, currentUnits, outputUnits):
+    return input1 * timeConversions[f"{currentUnits}-minute"] / timeConversions[f"{outputUnits}-minute"]
 
-def mi_to_in():
-    mile = float(input('Enter mi: '))
-    inch = mile / 63360
-    print(f'{mile} mi = {round(inch,2)}in')
-
-def in_to_mi():
-    inch = float(input('Enter in: '))
-    mi = inch * 1.57828e-5
-    print(f'{inch} in = {round(mi,2)}mi')
 
 
 #game loop
 while True:    
-    dist_conv()
-    user_choice = input('Which conversion would you like to do?(enter #): ')
-    print(user_choice)
+    currentUnits = input('Which type of unit would you like to convert?: ')
+    outputUnits = input('what would you like to convert to?: ')
+    input1 = float(input(f'Enter {currentUnits}: '))
     
-    if user_choice =='1':
-        mi_to_km()
-    if user_choice =='2':
-        km_to_mi()
-    if user_choice == '3':
-        cm_to_in()
-    if user_choice == '4':
-        in_to_cm()
+    print(convert(input1, currentUnits, outputUnits))
     
     if input('Would you like to make another conversion? (y/n): ') != 'y':
         break
